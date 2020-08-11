@@ -1,10 +1,11 @@
 {
-    "name": "App",
+    "name": "Application",
     "short_name": "app",
     "theme_color": "#2a0044",
     "background_color": "#2a0044",
     "display": "standalone",
     "start_url": "/PWA",
+    "homepage_url": "https://samukadev.github.com/PWA",
     "icons": [
       {
         "src": "images/icon-72x72.png",
