@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <h1>PWA - App</h1>
+    <div id="debug"></div>
+
+    <script>
+        let debug = document.querySelector('#debug')
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function () {
+                    let msg = 'service worker registered'
+                    console.log(msg);
+                    debug.innerHTML = msg
+                })
+                .catch(function (e) {
+                    let msg = 'service worker failed'
+                    console.warn(msg);
+                    console.log(e)
+                    debug.innerHTML = msg
+                });
+        }
+    </script>
+</body>
+
+</html>
