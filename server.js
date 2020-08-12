@@ -9,7 +9,7 @@ var credentials = {key: privateKey, cert: certificate};
 var express = require('express');
 var app = express();
 
-app.use(express.static('public'))
+app.use(express.static('docs'))
 
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);

@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App</title>
     <link rel="manifest" href="manifest.json">
+
+    <style>
+        #commit_sha {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            padding: 3px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>PWA - App v4</h1>
     <div id="debug"></div>
-
+    <div id="commit_sha"></div>
     <script>
         let debug = document.querySelector('#debug')
         if ('serviceWorker' in navigator) {
@@ -28,6 +38,11 @@
                     debug.innerHTML = msg
                 });
         }
+
+        fetch('https://api.github.com/repos/SamukaDEV/PWA/commits', { method: 'get' }).then(res => res.json()).then(data => {
+            let commit_sha = data[data.length - 1].sha
+            document.querySelector('#commit_sha').innerHTML = commit_sha
+        })
     </script>
 </body>
 
