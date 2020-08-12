@@ -5,14 +5,24 @@ var upath = '/PWA/'
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll([
-        upath,
-        upath + 'index.html',
-        // '/styles.css',
-        // '/app.js',
-        // '/manifest.js',
-        // '/vendor.js',
-      ]);
+      if (self.registration.scope === 'http://localhost/') {
+        return cache.addAll([
+          '/',
+          'index.html',
+          'css/bootstrap.min.css'
+        ]);
+      } else {
+        return cache.addAll([
+          upath,
+          upath + 'index.html',
+          upath + '/css/bootstrap.min.css'
+          // '/styles.css',
+          // '/app.js',
+          // '/manifest.js',
+          // '/vendor.js',
+        ]);
+      }
+
     })
   )
 });

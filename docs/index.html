@@ -40,7 +40,7 @@
         }
 
         fetch('https://api.github.com/repos/SamukaDEV/PWA/commits', { method: 'get' }).then(res => res.json()).then(data => {
-            let commit_sha = data[data.length - 1].sha
+            let commit_sha = data[0].sha
             document.querySelector('#commit_sha').innerHTML = commit_sha
         })
     </script>
