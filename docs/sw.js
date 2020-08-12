@@ -1,28 +1,22 @@
-var CACHE_NAME = 'static-v1';
+var CACHE_NAME = 'static-v2';
 
 var upath = '/PWA/'
 
 self.addEventListener('install', function (event) {
+  if (self.registration.scope === 'http://localhost/') {
+    upath = '/'
+  }
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      if (self.registration.scope === 'http://localhost/') {
-        return cache.addAll([
-          '/',
-          'index.html',
-          'css/bootstrap.min.css'
-        ]);
-      } else {
-        return cache.addAll([
-          upath,
-          upath + 'index.html',
-          upath + '/css/bootstrap.min.css'
-          // '/styles.css',
-          // '/app.js',
-          // '/manifest.js',
-          // '/vendor.js',
-        ]);
-      }
-
+      return cache.addAll([
+        upath,
+        upath + 'index.html',
+        upath + 'css/bootstrap.min.css'
+        // '/styles.css',
+        // '/app.js',
+        // '/manifest.js',
+        // '/vendor.js',
+      ]);
     })
   )
 });
