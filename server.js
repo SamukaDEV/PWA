@@ -14,5 +14,9 @@ app.use(express.static('docs'))
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(80);
-httpsServer.listen(443);
+httpServer.listen(80, function(){
+    console.log('Server running 80...')
+});
+httpsServer.listen(443, function(){
+    console.log('Server running 443...')
+});
